@@ -387,6 +387,7 @@ show_xray_status() {
 }
     clear 
 show_usage() {
+    echo ""
     echo "Cách sử dụng tập lệnh quản lý x-ui      [Đậu Đậu việt hóa] "
     echo "------------------------------------------"
     echo "x-ui              - Hiển thị menu quản lý (nhiều chức năng hơn)"
@@ -405,7 +406,8 @@ show_usage() {
 }
 clear 
 show_menu() {
-  echo -e "      [Đậu Đậu việt hóa]
+  echo ""
+  echo -e "     [Đậu Đậu việt hóa]
   ${green}x-ui Tập lệnh quản lý bảng điều khiển${plain}
   ${green}0.${plain} Tập lệnh thoát
 ————————————————
