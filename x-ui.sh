@@ -385,9 +385,9 @@ show_xray_status() {
         echo -e "trạng thái xray: ${red}Không chạy${plain}"
     fi
 }
-
+    clear 
 show_usage() {
-    echo "Cách sử dụng tập lệnh quản lý x-ui: "
+    echo "Cách sử dụng tập lệnh quản lý x-ui      [Đậu Đậu việt hóa] "
     echo "------------------------------------------"
     echo "x-ui              - Hiển thị menu quản lý (nhiều chức năng hơn)"
     echo "x-ui start        - Khởi chạy bảng điều khiển x-ui"
@@ -403,9 +403,9 @@ show_usage() {
     echo "x-ui uninstall    - Gỡ cài đặt bảng điều khiển x-ui"
     echo "------------------------------------------"
 }
-
+clear 
 show_menu() {
-  echo -e "       Đậu Đậu việt hóa
+  echo -e "      [Đậu Đậu việt hóa]
   ${green}x-ui Tập lệnh quản lý bảng điều khiển${plain}
   ${green}0.${plain} Tập lệnh thoát
 ————————————————
