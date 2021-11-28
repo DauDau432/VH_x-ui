@@ -281,7 +281,7 @@ install_bbr() {
 }
 
 update_shell() {
-    wget -O /usr/bin/x-ui -N --no-check-certificate https://github.com/vaxilu/x-ui/raw/master/x-ui.sh
+    wget -O /usr/bin/x-ui -N --no-check-certificate https://raw.githubusercontent.com/DauDau432/VH_x-ui/main/x-ui.sh
     if [[ $? != 0 ]]; then
         echo ""
         echo -e "${red}Không tải được script xuống, vui lòng kiểm tra xem máy có thể kết nối với Github không${plain}"
@@ -405,7 +405,7 @@ show_usage() {
 }
 
 show_menu() {
-    echo -e "
+  echo -e "       Đậu Đậu việt hóa
   ${green}x-ui Tập lệnh quản lý bảng điều khiển${plain}
   ${green}0.${plain} Tập lệnh thoát
 ————————————————
