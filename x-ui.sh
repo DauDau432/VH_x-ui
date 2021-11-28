@@ -125,7 +125,7 @@ uninstall() {
     rm /usr/local/x-ui/ -rf
 
     echo ""
-    echo -e "Quá trình gỡ cài đặt thành công. Nếu bạn muốn xóa tập lệnh này, hãy thoát tập lệnh và chạy ${green}rm /usr/bin/x-ui -f${plain} Xóa bỏ"
+    echo -e "Quá trình gỡ cài đặt thành công."
     echo ""
 
     if [[ $# == 0 ]]; then
@@ -346,15 +346,15 @@ show_status() {
     check_status
     case $? in
         0)
-            echo -e "Trạng thái bảng điều khiển: ${green}Đã chạy${plain}"
+            echo -e "Trạng thái bảng điều khiển: Đã chạy"
             show_enable_status
             ;;
         1)
-            echo -e "Trạng thái bảng điều khiển: ${yellow}Không chạy${plain}"
+            echo -e "Trạng thái bảng điều khiển: Không chạy"
             show_enable_status
             ;;
         2)
-            echo -e "Trạng thái bảng điều khiển: ${red}Chưa được cài đặt${plain}"
+            echo -e "Trạng thái bảng điều khiển: Chưa được cài đặt"
     esac
     show_xray_status
 }
@@ -380,15 +380,16 @@ check_xray_status() {
 show_xray_status() {
     check_xray_status
     if [[ $? == 0 ]]; then
-        echo -e "trạng thái xray: ${green}Chạy ${plain}"
+        echo -e "trạng thái xray: Chạy"
     else
-        echo -e "trạng thái xray: ${red}Không chạy${plain}"
+        echo -e "trạng thái xray: Không chạy"
     fi
 }
  
 show_usage() {
     echo ""
-    echo "Cách sử dụng tập lệnh quản lý x-ui      [Đậu Đậu việt hóa] "
+    echo " ${green}[Đậu Đậu việt hóa]{plain} "
+    echo "Cách sử dụng tập lệnh quản lý x-ui       "
     echo "------------------------------------------"
     echo "x-ui              - Hiển thị menu quản lý (nhiều chức năng hơn)"
     echo "x-ui start        - Khởi chạy bảng điều khiển x-ui"
@@ -407,8 +408,8 @@ show_usage() {
 
 show_menu() {
   echo ""
-  echo -e "     [Đậu Đậu việt hóa]
-  ${green}x-ui Tập lệnh quản lý bảng điều khiển${plain}
+  echo -e "     ${green}[Đậu Đậu việt hóa]{plain} 
+  ${green}x-ui${plain} Tập lệnh quản lý bảng điều khiển
   ${green}0.${plain} Tập lệnh thoát
 ————————————————
   ${green}1.${plain} Cài đặt x-ui
