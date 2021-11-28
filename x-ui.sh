@@ -362,9 +362,9 @@ show_status() {
 show_enable_status() {
     check_enabled
     if [[ $? == 0 ]]; then
-        echo -e "Có tự động khởi động sau khi khởi động không: ${green}đúng${plain}"
+        echo -e "Có tự động khởi động sau khi khởi động không: đúng"
     else
-        echo -e "Có tự động khởi động sau khi khởi động không: ${red}không${plain}"
+        echo -e "Có tự động khởi động sau khi khởi động không: không"
     fi
 }
 
@@ -388,7 +388,7 @@ show_xray_status() {
  
 show_usage() {
     echo ""
-    echo " ${green}[Đậu Đậu việt hóa]{plain} "
+    echo -e " ${green}[Đậu Đậu việt hóa] "
     echo "Cách sử dụng tập lệnh quản lý x-ui       "
     echo "------------------------------------------"
     echo "x-ui              - Hiển thị menu quản lý (nhiều chức năng hơn)"
@@ -408,7 +408,7 @@ show_usage() {
 
 show_menu() {
   echo ""
-  echo -e "     ${green}[Đậu Đậu việt hóa]{plain} 
+  echo -e "     ${green}[Đậu Đậu việt hóa]
   ${green}x-ui${plain} Tập lệnh quản lý bảng điều khiển
   ${green}0.${plain} Tập lệnh thoát
 ————————————————
