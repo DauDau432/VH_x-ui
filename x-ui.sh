@@ -404,7 +404,7 @@ show_usage() {
     echo "x-ui uninstall    - Gỡ cài đặt bảng điều khiển x-ui"
     echo "------------------------------------------"
 }
-clear 
+
 show_menu() {
   echo ""
   echo -e "     [Đậu Đậu việt hóa]
