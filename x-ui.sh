@@ -385,7 +385,7 @@ show_xray_status() {
         echo -e "trạng thái xray: ${red}Không chạy${plain}"
     fi
 }
-    clear 
+ 
 show_usage() {
     echo ""
     echo "Cách sử dụng tập lệnh quản lý x-ui      [Đậu Đậu việt hóa] "
