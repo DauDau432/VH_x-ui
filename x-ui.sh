@@ -346,15 +346,15 @@ show_status() {
     check_status
     case $? in
         0)
-            echo -e "Trạng thái bảng điều khiển: Đã chạy"
+            echo -e " Trạng thái bảng điều khiển: Đã chạy"
             show_enable_status
             ;;
         1)
-            echo -e "Trạng thái bảng điều khiển: Không chạy"
+            echo -e " Trạng thái bảng điều khiển: Không chạy"
             show_enable_status
             ;;
         2)
-            echo -e "Trạng thái bảng điều khiển: Chưa được cài đặt"
+            echo -e " Trạng thái bảng điều khiển: Chưa được cài đặt"
     esac
     show_xray_status
 }
@@ -362,9 +362,9 @@ show_status() {
 show_enable_status() {
     check_enabled
     if [[ $? == 0 ]]; then
-        echo -e "Có tự động khởi động sau khi khởi động không: đúng"
+        echo -e " Có tự động khởi động sau khi khởi động không: đúng"
     else
-        echo -e "Có tự động khởi động sau khi khởi động không: không"
+        echo -e " Có tự động khởi động sau khi khởi động không: không"
     fi
 }
 
@@ -380,30 +380,30 @@ check_xray_status() {
 show_xray_status() {
     check_xray_status
     if [[ $? == 0 ]]; then
-        echo -e "trạng thái xray: Chạy"
+        echo -e " trạng thái xray: Chạy"
     else
-        echo -e "trạng thái xray: Không chạy"
+        echo -e " trạng thái xray: Không chạy"
     fi
 }
  
 show_usage() {
     echo ""
     echo -e " ${green}[Đậu Đậu việt hóa] "
-    echo " ${plain}Cách sử dụng tập lệnh quản lý x-ui       "
-    echo "------------------------------------------"
-    echo " x-ui              - Hiển thị menu quản lý (nhiều chức năng hơn)"
-    echo " x-ui start        - Khởi chạy bảng điều khiển x-ui"
-    echo " x-ui stop         - Dừng bảng điều khiển x-ui"
-    echo " x-ui restart      - Khởi động lại bảng điều khiển x-ui"
-    echo " x-ui status       - Xem trạng thái x-ui"
-    echo " x-ui enable       - Đặt x-ui tự động khởi động sau khi khởi động"
-    echo " x-ui disable      - Hủy khởi động x-ui để bắt đầu tự động"
-    echo " x-ui log          - Xem nhật ký x-ui"
-    echo " x-ui v2-ui        - Di chuyển dữ liệu tài khoản v2-ui của máy này sang x-ui"
-    echo " x-ui update       - Cập nhật bảng điều khiển x-ui"
-    echo " x-ui install      - Cài đặt bảng điều khiển x-ui"
-    echo " x-ui uninstall    - Gỡ cài đặt bảng điều khiển x-ui"
-    echo "------------------------------------------"
+    echo -e " ${plain}Cách sử dụng tập lệnh quản lý x-ui       "
+    echo -e "------------------------------------------"
+    echo -e " x-ui              - Hiển thị menu quản lý (nhiều chức năng hơn)"
+    echo -e " x-ui start        - Khởi chạy bảng điều khiển x-ui"
+    echo -e " x-ui stop         - Dừng bảng điều khiển x-ui"
+    echo -e " x-ui restart      - Khởi động lại bảng điều khiển x-ui"
+    echo -e " x-ui status       - Xem trạng thái x-ui"
+    echo -e " x-ui enable       - Đặt x-ui tự động khởi động sau khi khởi động"
+    echo -e " x-ui disable      - Hủy khởi động x-ui để bắt đầu tự động"
+    echo -e " x-ui log          - Xem nhật ký x-ui"
+    echo -e " x-ui v2-ui        - Di chuyển dữ liệu tài khoản v2-ui của máy này sang x-ui"
+    echo -e " x-ui update       - Cập nhật bảng điều khiển x-ui"
+    echo -e " x-ui install      - Cài đặt bảng điều khiển x-ui"
+    echo -e " x-ui uninstall    - Gỡ cài đặt bảng điều khiển x-ui"
+    echo -e "------------------------------------------"
 }
 
 show_menu() {
