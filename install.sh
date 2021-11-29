@@ -98,10 +98,10 @@ install_x-ui() {
     else
         last_version=$1
         url="https://github.com/vaxilu/x-ui/releases/download/${last_version}/x-ui-linux-${arch}.tar.gz"
-        echo -e "bắt đầu cài đặt x-ui v$1"
+        echo -e " bắt đầu cài đặt x-ui v$1"
         wget -N --no-check-certificate -O /usr/local/x-ui-linux-${arch}.tar.gz ${url}
         if [[ $? -ne 0 ]]; then
-            echo -e "${red}Tải xuống x-ui v$1 Không thành công, hãy đảm bảo rằng phiên bản này tồn tại${plain}"
+            echo -e " Tải xuống x-ui v$1 Không thành công, hãy đảm bảo rằng phiên bản này tồn tại${plain}"
             exit 1
         fi
     fi
@@ -147,6 +147,6 @@ install_x-ui() {
     echo -e "----------------------------------------------"
 }
 
-echo -e "${green}bắt đầu cài đặt${plain}"
+echo -e " bắt đầu cài đặt${plain}"
 install_base
 install_x-ui $1
