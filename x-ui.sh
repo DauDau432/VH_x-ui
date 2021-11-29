@@ -143,6 +143,7 @@ reset_user() {
         return 0
     fi
     /usr/local/x-ui/x-ui setting -username admin -password admin
+    echo ""
     echo -e " Tên người dùng và mật khẩu đã được đặt lại thành ${green}admin${plain}，Bây giờ hãy khởi động lại bảng điều khiển"
     confirm_restart
 }
@@ -182,6 +183,7 @@ start() {
         sleep 2
         check_status
         if [[ $? == 0 ]]; then
+            echo ""
             echo -e " x-ui Đã bắt đầu thành công${plain}"
         else
             echo -e " Bảng điều khiển không khởi động được. Có thể do thời gian khởi động vượt quá hai giây. Vui lòng kiểm tra thông tin nhật ký sau.${plain}"
@@ -203,6 +205,7 @@ stop() {
         sleep 2
         check_status
         if [[ $? == 1 ]]; then
+            echo ""
             echo -e " x-ui và xray đã dừng thành công${plain}"
         else
             echo -e " Bảng điều khiển không dừng được. Có thể do thời gian dừng vượt quá hai giây. Vui lòng kiểm tra thông tin nhật ký sau.${plain}"
@@ -219,6 +222,7 @@ restart() {
     sleep 2
     check_status
     if [[ $? == 0 ]]; then
+        echo ""
         echo -e " x-ui và xray khởi động lại thành công${plain}"
     else
         echo -e " Khởi động lại bảng điều khiển không thành công, có thể do thời gian khởi động vượt quá hai giây, vui lòng kiểm tra thông tin nhật ký sau${plain}"
@@ -238,6 +242,7 @@ status() {
 enable() {
     systemctl enable x-ui
     if [[ $? == 0 ]]; then
+        echo ""
         echo -e " x-ui Đặt khởi động để bắt đầu thành công ${plain}"
     else
         echo -e " x-ui Không đặt được chế độ tự khởi động sau khi bật nguồn${plain}"
@@ -409,8 +414,8 @@ show_usage() {
 
 show_menu() {
   echo ""
-  echo -e "     ${green}[Đậu Đậu việt hóa]
-  x-ui${plain} Tập lệnh quản lý bảng điều khiển
+  echo -e "     ${green}[Đậu Đậu việt hóa]${plain}
+  x-ui:${plain} Tập lệnh quản lý bảng điều khiển
   0.${plain} Tập lệnh thoát
 ————————————————
   1.${plain} Cài đặt x-ui
