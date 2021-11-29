@@ -6,7 +6,7 @@ yellow='\033[0;33m'
 plain='\033[0m'
 
 # check root
-[[ $EUID -ne 0 ]] && echo -e "${red}lỗi: ${plain} Tập lệnh này phải được chạy với tư cách người dùng gốc！\n" && exit 1
+[[ $EUID -ne 0 ]] && echo -e " lỗi: ${plain} Tập lệnh này phải được chạy với tư cách người dùng gốc！\n" && exit 1
 
 # check os
 if [[ -f /etc/redhat-release ]]; then
@@ -24,7 +24,7 @@ elif cat /proc/version | grep -Eqi "ubuntu"; then
 elif cat /proc/version | grep -Eqi "centos|red hat|redhat"; then
     release="centos"
 else
-    echo -e "${red}Phiên bản hệ thống không được phát hiện, vui lòng liên hệ với tác giả kịch bản！${plain}\n" && exit 1
+    echo -e " Phiên bản hệ thống không được phát hiện, vui lòng liên hệ với tác giả kịch bản！${plain}\n" && exit 1
 fi
 
 os_version=""
@@ -68,7 +68,7 @@ confirm() {
 }
 
 confirm_restart() {
-    confirm "Có khởi động lại bảng điều khiển hay không, việc khởi động lại bảng điều khiển cũng sẽ khởi động lại xray" "y"
+    confirm " Có khởi động lại bảng điều khiển hay không, việc khởi động lại bảng điều khiển cũng sẽ khởi động lại xray" "y"
     if [[ $? == 0 ]]; then
         restart
     else
@@ -77,7 +77,7 @@ confirm_restart() {
 }
 
 before_show_menu() {
-    echo && echo -n -e "${yellow}Nhấn enter để quay lại menu chính: ${plain}" && read temp
+    echo && echo -n -e " ${yellow}Nhấn enter để quay lại menu chính: ${plain}" && read temp
     show_menu
 }
 
@@ -93,9 +93,10 @@ install() {
 }
 
 update() {
-    confirm "Chức năng này sẽ buộc cài đặt lại phiên bản mới nhất hiện tại và dữ liệu sẽ không bị mất. Bạn có muốn tiếp tục không?" "n"
+    confirm " Chức năng này sẽ buộc cài đặt lại phiên bản mới nhất hiện tại và dữ liệu sẽ không bị mất. Bạn có muốn tiếp tục không?" "n"
     if [[ $? != 0 ]]; then
-        echo -e "${red}Đã hủy${plain}"
+        echo ""
+        echo -e " Đã hủy${plain}"
         if [[ $# == 0 ]]; then
             before_show_menu
         fi
@@ -103,13 +104,13 @@ update() {
     fi
     bash <(curl -Ls https://raw.githubusercontent.com/DauDau432/VH_x-ui/main/install.sh)
     if [[ $? == 0 ]]; then
-        echo -e "${green}Cập nhật hoàn tất và bảng điều khiển đã được tự động khởi động lại${plain}"
+        echo -e " Cập nhật hoàn tất và bảng điều khiển đã được tự động khởi động lại${plain}"
         exit 0
     fi
 }
 
 uninstall() {
-    confirm "Bạn có chắc chắn muốn gỡ cài đặt bảng điều khiển không, xray cũng sẽ gỡ cài đặt?" "n"
+    confirm " Bạn có chắc chắn muốn gỡ cài đặt bảng điều khiển không, xray cũng sẽ gỡ cài đặt?" "n"
     if [[ $? != 0 ]]; then
         if [[ $# == 0 ]]; then
             show_menu
@@ -125,7 +126,7 @@ uninstall() {
     rm /usr/local/x-ui/ -rf
 
     echo ""
-    echo -e "Quá trình gỡ cài đặt thành công."
+    echo -e " Quá trình gỡ cài đặt thành công."
     echo ""
 
     if [[ $# == 0 ]]; then
@@ -134,7 +135,7 @@ uninstall() {
 }
 
 reset_user() {
-    confirm "Bạn có chắc chắn muốn đặt lại tên người dùng và mật khẩu cho quản trị viên không" "n"
+    confirm " Bạn có chắc chắn muốn đặt lại tên người dùng và mật khẩu cho quản trị viên không" "n"
     if [[ $? != 0 ]]; then
         if [[ $# == 0 ]]; then
             show_menu
@@ -142,12 +143,12 @@ reset_user() {
         return 0
     fi
     /usr/local/x-ui/x-ui setting -username admin -password admin
-    echo -e "Tên người dùng và mật khẩu đã được đặt lại thành ${green}admin${plain}，Bây giờ hãy khởi động lại bảng điều khiển"
+    echo -e " Tên người dùng và mật khẩu đã được đặt lại thành ${green}admin${plain}，Bây giờ hãy khởi động lại bảng điều khiển"
     confirm_restart
 }
 
 reset_config() {
-    confirm "Bạn có chắc chắn muốn đặt lại tất cả cài đặt bảng không? Dữ liệu tài khoản sẽ không bị mất, tên người dùng và mật khẩu sẽ không bị thay đổi" "n"
+    confirm " Bạn có chắc chắn muốn đặt lại tất cả cài đặt bảng không? Dữ liệu tài khoản sẽ không bị mất, tên người dùng và mật khẩu sẽ không bị thay đổi" "n"
     if [[ $? != 0 ]]; then
         if [[ $# == 0 ]]; then
             show_menu
@@ -155,18 +156,18 @@ reset_config() {
         return 0
     fi
     /usr/local/x-ui/x-ui setting -reset
-    echo -e "Tất cả cài đặt bảng điều khiển đã được đặt lại về giá trị mặc định, bây giờ vui lòng khởi động lại bảng điều khiển và sử dụng giá trị mặc định ${green}54321${plain} Bảng điều khiển truy cập cổng"
+    echo -e " Tất cả cài đặt bảng điều khiển đã được đặt lại về giá trị mặc định, bây giờ vui lòng khởi động lại bảng điều khiển và sử dụng giá trị mặc định ${green}54321${plain} Bảng điều khiển truy cập cổng"
     confirm_restart
 }
 
 set_port() {
-    echo && echo -n -e "Nhập số cổng[1-65535]: " && read port
+    echo && echo -n -e " Nhập số cổng[1-65535]: " && read port
     if [[ -z "${port}" ]]; then
-        echo -e "${yellow}Đã hủy${plain}"
+        echo -e " Đã hủy${plain}"
         before_show_menu
     else
         /usr/local/x-ui/x-ui setting -port ${port}
-        echo -e "Sau khi thiết lập cổng, vui lòng khởi động lại bảng điều khiển và sử dụng cổng mới đặt ${green}${port}${plain} Bảng điều khiển truy cập"
+        echo -e " Sau khi thiết lập cổng, vui lòng khởi động lại bảng điều khiển và sử dụng cổng mới đặt ${green}${port}${plain} Bảng điều khiển truy cập"
         confirm_restart
     fi
 }
@@ -175,15 +176,15 @@ start() {
     check_status
     if [[ $? == 0 ]]; then
         echo ""
-        echo -e "${green}Bảng đã chạy rồi, không cần khởi động lại, nếu cần khởi động lại, vui lòng chọn khởi động lại${plain}"
+        echo -e " Bảng đã chạy rồi, không cần khởi động lại, nếu cần khởi động lại, vui lòng chọn khởi động lại${plain}"
     else
         systemctl start x-ui
         sleep 2
         check_status
         if [[ $? == 0 ]]; then
-            echo -e "${green}x-ui Đã bắt đầu thành công${plain}"
+            echo -e " x-ui Đã bắt đầu thành công${plain}"
         else
-            echo -e "${red}Bảng điều khiển không khởi động được. Có thể do thời gian khởi động vượt quá hai giây. Vui lòng kiểm tra thông tin nhật ký sau.${plain}"
+            echo -e " Bảng điều khiển không khởi động được. Có thể do thời gian khởi động vượt quá hai giây. Vui lòng kiểm tra thông tin nhật ký sau.${plain}"
         fi
     fi
 
@@ -196,15 +197,15 @@ stop() {
     check_status
     if [[ $? == 1 ]]; then
         echo ""
-        echo -e "${green}Bảng điều khiển đã dừng, không cần dừng lại${plain}"
+        echo -e " Bảng điều khiển đã dừng, không cần dừng lại${plain}"
     else
         systemctl stop x-ui
         sleep 2
         check_status
         if [[ $? == 1 ]]; then
-            echo -e "${green}x-ui và xray đã dừng thành công${plain}"
+            echo -e " x-ui và xray đã dừng thành công${plain}"
         else
-            echo -e "${red}Bảng điều khiển không dừng được. Có thể do thời gian dừng vượt quá hai giây. Vui lòng kiểm tra thông tin nhật ký sau.${plain}"
+            echo -e " Bảng điều khiển không dừng được. Có thể do thời gian dừng vượt quá hai giây. Vui lòng kiểm tra thông tin nhật ký sau.${plain}"
         fi
     fi
 
@@ -218,9 +219,9 @@ restart() {
     sleep 2
     check_status
     if [[ $? == 0 ]]; then
-        echo -e "${green}x-ui và xray khởi động lại thành công${plain}"
+        echo -e " x-ui và xray khởi động lại thành công${plain}"
     else
-        echo -e "${red}Khởi động lại bảng điều khiển không thành công, có thể do thời gian khởi động vượt quá hai giây, vui lòng kiểm tra thông tin nhật ký sau${plain}"
+        echo -e " Khởi động lại bảng điều khiển không thành công, có thể do thời gian khởi động vượt quá hai giây, vui lòng kiểm tra thông tin nhật ký sau${plain}"
     fi
     if [[ $# == 0 ]]; then
         before_show_menu
@@ -237,9 +238,9 @@ status() {
 enable() {
     systemctl enable x-ui
     if [[ $? == 0 ]]; then
-        echo -e "${green}x-ui Đặt khởi động để bắt đầu thành công ${plain}"
+        echo -e " x-ui Đặt khởi động để bắt đầu thành công ${plain}"
     else
-        echo -e "${red}x-ui Không đặt được chế độ tự khởi động sau khi bật nguồn${plain}"
+        echo -e " x-ui Không đặt được chế độ tự khởi động sau khi bật nguồn${plain}"
     fi
 
     if [[ $# == 0 ]]; then
@@ -250,9 +251,9 @@ enable() {
 disable() {
     systemctl disable x-ui
     if [[ $? == 0 ]]; then
-        echo -e "${green}x-ui Hủy tự động bật nguồn thành công${plain}"
+        echo -e " x-ui Hủy tự động bật nguồn thành công${plain}"
     else
-        echo -e "${red}x-ui Hủy bỏ khởi động thất bại${plain}"
+        echo -e " x-ui Hủy bỏ khởi động thất bại${plain}"
     fi
 
     if [[ $# == 0 ]]; then
@@ -284,11 +285,11 @@ update_shell() {
     wget -O /usr/bin/x-ui -N --no-check-certificate https://raw.githubusercontent.com/DauDau432/VH_x-ui/main/x-ui.sh
     if [[ $? != 0 ]]; then
         echo ""
-        echo -e "${red}Không tải được script xuống, vui lòng kiểm tra xem máy có thể kết nối với Github không${plain}"
+        echo -e " Không tải được script xuống, vui lòng kiểm tra xem máy có thể kết nối với Github không${plain}"
         before_show_menu
     else
         chmod +x /usr/bin/x-ui
-        echo -e "${green}Tập lệnh nâng cấp thành công, vui lòng chạy lại tập lệnh${plain}" && exit 0
+        echo -e " Tập lệnh nâng cấp thành công, vui lòng chạy lại tập lệnh${plain}" && exit 0
     fi
 }
 
@@ -318,7 +319,7 @@ check_uninstall() {
     check_status
     if [[ $? != 2 ]]; then
         echo ""
-        echo -e "${red}Bảng điều khiển đã được cài đặt, vui lòng không cài đặt nhiều lần${plain}"
+        echo -e " Bảng điều khiển đã được cài đặt, vui lòng không cài đặt nhiều lần${plain}"
         if [[ $# == 0 ]]; then
             before_show_menu
         fi
@@ -332,7 +333,7 @@ check_install() {
     check_status
     if [[ $? == 2 ]]; then
         echo ""
-        echo -e "${red}Vui lòng cài đặt bảng điều khiển trước${plain}"
+        echo -e " Vui lòng cài đặt bảng điều khiển trước${plain}"
         if [[ $# == 0 ]]; then
             before_show_menu
         fi
@@ -409,30 +410,30 @@ show_usage() {
 show_menu() {
   echo ""
   echo -e "     ${green}[Đậu Đậu việt hóa]
-  ${green}x-ui${plain} Tập lệnh quản lý bảng điều khiển
-  ${green}0.${plain} Tập lệnh thoát
+  x-ui${plain} Tập lệnh quản lý bảng điều khiển
+  0.${plain} Tập lệnh thoát
 ————————————————
-  ${green}1.${plain} Cài đặt x-ui
-  ${green}2.${plain} Cập nhật x-ui
-  ${green}3.${plain} Gỡ cài đặt x-ui
+  1.${plain} Cài đặt x-ui
+  2.${plain} Cập nhật x-ui
+  3.${plain} Gỡ cài đặt x-ui
 ————————————————
-  ${green}4.${plain} Đặt lại tên người dùng và mật khẩu
-  ${green}5.${plain} Đặt lại cài đặt bảng điều khiển
-  ${green}6.${plain} Đặt cổng bảng điều khiển
+  4.${plain} Đặt lại tên người dùng và mật khẩu
+  5.${plain} Đặt lại cài đặt bảng điều khiển
+  6.${plain} Đặt cổng bảng điều khiển
 ————————————————
-  ${green}7.${plain} Bắt đầu x-ui
-  ${green}8.${plain} Dừng lại x-ui
-  ${green}9.${plain} Khởi động lại x-ui
- ${green}10.${plain} Xem trạng thái x-ui
- ${green}11.${plain} Xem nhật ký x-ui
+  7.${plain} Bắt đầu x-ui
+  8.${plain} Dừng lại x-ui
+  9.${plain} Khởi động lại x-ui
+ 10.${plain} Xem trạng thái x-ui
+ 11.${plain} Xem nhật ký x-ui
 ————————————————
- ${green}12.${plain} Đặt x-ui tự động khởi động sau khi khởi động
- ${green}13.${plain} Hủy khởi động x-ui để bắt đầu tự động
+ 12.${plain} Đặt x-ui tự động khởi động sau khi khởi động
+ 13.${plain} Hủy khởi động x-ui để bắt đầu tự động
 ————————————————
- ${green}14.${plain} Cài đặt một cú nhấp chuột của bbr (hạt nhân mới nhất)
+ 14.${plain} Cài đặt một cú nhấp chuột của bbr (hạt nhân mới nhất)
  "
     show_status
-    echo && read -p "Vui lòng nhập lựa chọn [0-14]: " num
+    echo && read -p " Vui lòng nhập lựa chọn [0-14]: " num
 
     case "${num}" in
         0) exit 0
@@ -465,7 +466,7 @@ show_menu() {
         ;;
         14) install_bbr
         ;;
-        *) echo -e "${red}Vui lòng nhập số chính xác [0-14]${plain}"
+        *) echo -e " Vui lòng nhập số chính xác [0-14]${plain}"
         ;;
     esac
 }
