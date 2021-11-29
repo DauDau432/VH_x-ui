@@ -176,7 +176,6 @@ set_port() {
 start() {
     check_status
     if [[ $? == 0 ]]; then
-        echo ""
         echo -e " Bảng đã chạy rồi, không cần khởi động lại, nếu cần khởi động lại, vui lòng chọn khởi động lại${plain}"
     else
         systemctl start x-ui
