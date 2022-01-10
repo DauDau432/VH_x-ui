@@ -1,4 +1,4 @@
-# x-ui full việt hóa
+# X-ui full việt hóa
 Hỗ trợ bảng điều khiển xray đa giao thức và nhiều người dùng
 
 # Đặc trưng
