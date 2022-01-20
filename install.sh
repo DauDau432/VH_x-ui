@@ -130,7 +130,7 @@ install_x-ui() {
     echo -e "  Nếu đó là để cập nhật bảng điều khiển, hãy truy cập bảng điều khiển như bạn đã làm trước đây"
     echo -e ""
     echo -e "  x-ui Cách sử dụng tập lệnh quản lý: "
-    echo -e "-----------${green}[Đậu Đậu việt hóa]${plain}-----------"
+    echo -e "--------------${green}[Đậu Đậu việt hóa]${plain}--------------"
     echo -e "  x-ui              - Menu quản lý màn hình (nhiều chức năng hơn)"
     echo -e "  x-ui start        - Khởi chạy bảng điều khiển x-ui"
     echo -e "  x-ui stop         - Dừng bảng điều khiển x-ui"
