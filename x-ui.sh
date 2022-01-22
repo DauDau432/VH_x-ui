@@ -413,7 +413,8 @@ show_usage() {
 
 show_menu() {
   echo ""
-  echo -e "     ${green}[Đậu Đậu việt hóa]${plain}
+  echo -e "     
+${green}-------[Đậu Đậu việt hóa]-------${plain}
    x-ui:${plain} Tập lệnh quản lý bảng điều khiển
    0.${plain} Tập lệnh thoát
 ————————————————————————————————
