@@ -434,7 +434,7 @@ ${green}-------[Đậu Đậu việt hóa]-------${plain}
 ————————————————————————————————
   12.${plain} Đặt x-ui tự động khởi động sau khi khởi động
   13.${plain} Hủy khởi động x-ui để bắt đầu tự động
-  14.${plain} Cài đặt một cú nhấp chuột của bbr (hạt nhân mới nhất)
+  14.${plain} Cài đặt bbr (hạt nhân mới nhất)
 ————————————————————————————————  
  "
     show_status
