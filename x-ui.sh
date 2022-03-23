@@ -385,7 +385,7 @@ check_xray_status() {
 show_xray_status() {
     check_xray_status
     if [[ $? == 0 ]]; then
-        echo -e "  trạng thái xray: Chạy"
+        echo -e "  trạng thái xray: Đã chạy"
     else
         echo -e "  trạng thái xray: Không chạy"
     fi
