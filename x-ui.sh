@@ -6,7 +6,7 @@ yellow='\033[0;33m'
 plain='\033[0m'
 
 # check root
-[[ $EUID -ne 0 ]] && echo -e "  lỗi: Tập lệnh này phải được chạy với tư cách người dùng gốc！\n" && exit 1
+[[ $EUID -ne 0 ]] && echo -e "  lỗi: Tập lệnh này phải được chạy với quyền root！\n" && exit 1
 
 # check os
 if [[ -f /etc/redhat-release ]]; then
@@ -149,7 +149,7 @@ reset_user() {
 }
 
 reset_config() {
-    confirm "  Bạn có chắc chắn muốn đặt lại tất cả cài đặt bảng không? Dữ liệu tài khoản sẽ không bị mất, tên người dùng và mật khẩu sẽ không bị thay đổi" "n"
+    confirm "  Bạn có chắc chắn muốn đặt lại tất cả cài đặt bảng điều khiển không? Dữ liệu tài khoản sẽ không bị mất, tên người dùng và mật khẩu sẽ không bị thay đổi" "n"
     if [[ $? != 0 ]]; then
         if [[ $# == 0 ]]; then
             show_menu
@@ -157,7 +157,7 @@ reset_config() {
         return 0
     fi
     /usr/local/x-ui/x-ui setting -reset
-    echo -e "  Tất cả cài đặt bảng điều khiển đã được đặt lại về giá trị mặc định, bây giờ vui lòng khởi động lại bảng điều khiển và sử dụng giá trị mặc định ${green}54321${plain} Bảng điều khiển truy cập cổng"
+    echo -e "  Tất cả cài đặt bảng điều khiển đã được đặt lại về giá trị mặc định, vui lòng khởi động lại bảng điều khiển và sử dụng giá trị mặc định ${green}54321${plain} Bảng điều khiển truy cập cổng"
     confirm_restart
 }
 
@@ -183,9 +183,9 @@ start() {
         check_status
         if [[ $? == 0 ]]; then
             echo ""
-            echo -e "  x-ui Đã bắt đầu thành công${plain}"
+            echo -e "  x-ui Đã chạy thành công${plain}"
         else
-            echo -e "  Bảng điều khiển không khởi động được. Có thể do thời gian khởi động vượt quá hai giây. Vui lòng kiểm tra thông tin nhật ký sau.${plain}"
+            echo -e "  Bảng điều khiển không khởi động được. Có thể do thời gian khởi động vượt quá hai giây. Vui lòng kiểm tra thông tin nhật ký.${plain}"
         fi
     fi
 
@@ -207,7 +207,7 @@ stop() {
             echo ""
             echo -e "  x-ui và xray đã dừng thành công${plain}"
         else
-            echo -e "  Bảng điều khiển không dừng được. Có thể do thời gian dừng vượt quá hai giây. Vui lòng kiểm tra thông tin nhật ký sau.${plain}"
+            echo -e "  Bảng điều khiển không dừng được. Có thể do thời gian dừng vượt quá hai giây. Vui lòng kiểm tra thông tin nhật ký.${plain}"
         fi
     fi
 
@@ -224,7 +224,7 @@ restart() {
         echo ""
         echo -e "  x-ui và xray khởi động lại thành công${plain}"
     else
-        echo -e "  Khởi động lại bảng điều khiển không thành công, có thể do thời gian khởi động vượt quá hai giây, vui lòng kiểm tra thông tin nhật ký sau${plain}"
+        echo -e "  Khởi động lại bảng điều khiển không thành công, có thể do thời gian khởi động vượt quá hai giây, vui lòng kiểm tra thông tin nhật ký"
     fi
     if [[ $# == 0 ]]; then
         before_show_menu
@@ -242,9 +242,9 @@ enable() {
     systemctl enable x-ui
     if [[ $? == 0 ]]; then
         echo ""
-        echo -e "  x-ui Đặt khởi động để bắt đầu thành công ${plain}"
+        echo -e "  x-ui bật tự động khởi động thành công ${plain}"
     else
-        echo -e "  x-ui Không đặt được chế độ tự khởi động sau khi bật nguồn${plain}"
+        echo -e "  x-ui Không thể bật tự động khởi động"
     fi
 
     if [[ $# == 0 ]]; then
@@ -255,9 +255,9 @@ enable() {
 disable() {
     systemctl disable x-ui
     if [[ $? == 0 ]]; then
-        echo -e "  x-ui Hủy tự động bật nguồn thành công${plain}"
+        echo -e "  x-ui Hủy tự động khởi động thành công${plain}"
     else
-        echo -e "  x-ui Hủy bỏ khởi động thất bại${plain}"
+        echo -e "  x-ui Hủy tự động khởi động thất bại${plain}"
     fi
 
     if [[ $# == 0 ]]; then
@@ -367,9 +367,9 @@ show_status() {
 show_enable_status() {
     check_enabled
     if [[ $? == 0 ]]; then
-        echo -e "  Có tự động khởi động sau khi khởi động không: Có"
+        echo -e "  Có tự động khởi động không: Có"
     else
-        echo -e "  Có tự động khởi động sau khi khởi động không: không"
+        echo -e "  Có tự động khởi động không: không"
     fi
 }
 
@@ -401,8 +401,8 @@ show_usage() {
     echo -e "  x-ui stop         - Dừng bảng điều khiển x-ui"
     echo -e "  x-ui restart      - Khởi động lại bảng điều khiển x-ui"
     echo -e "  x-ui status       - Xem trạng thái x-ui"
-    echo -e "  x-ui enable       - Đặt x-ui tự động khởi động sau khi khởi động"
-    echo -e "  x-ui disable      - Hủy khởi động x-ui để bắt đầu tự động"
+    echo -e "  x-ui enable       - Đặt tự động khởi động x-ui"
+    echo -e "  x-ui disable      - Hủy tự động khởi động x-ui"
     echo -e "  x-ui log          - Xem nhật ký x-ui"
     echo -e "  x-ui v2-ui        - Di chuyển dữ liệu tài khoản v2-ui của máy này sang x-ui"
     echo -e "  x-ui update       - Cập nhật bảng điều khiển x-ui"
@@ -416,7 +416,7 @@ show_menu() {
   echo -e "     
 ${green}-------[Đậu Đậu việt hóa]-------${plain}
    x-ui:${plain} Tập lệnh quản lý bảng điều khiển
-   0.${plain} Tập lệnh thoát
+   0.${plain} Thoát
 ————————————————————————————————
    1.${plain} Cài đặt x-ui
    2.${plain} Cập nhật x-ui
@@ -426,14 +426,14 @@ ${green}-------[Đậu Đậu việt hóa]-------${plain}
    5.${plain} Đặt lại cài đặt bảng điều khiển
    6.${plain} Đặt cổng bảng điều khiển
 ————————————————————————————————
-   7.${plain} Bắt đầu x-ui
+   7.${plain} Khởi động x-ui
    8.${plain} Dừng lại x-ui
    9.${plain} Khởi động lại x-ui
   10.${plain} Xem trạng thái x-ui
   11.${plain} Xem nhật ký x-ui
 ————————————————————————————————
-  12.${plain} Đặt x-ui tự động khởi động sau khi khởi động
-  13.${plain} Hủy khởi động x-ui để bắt đầu tự động
+  12.${plain} Đặt tự động khởi động x-ui 
+  13.${plain} Hủy tự động khởi động x-ui 
   14.${plain} Cài đặt bbr (hạt nhân mới nhất)
 ————————————————————————————————  
  "
