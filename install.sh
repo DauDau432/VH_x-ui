@@ -36,10 +36,10 @@ elif [[ $arch == "aarch64" || $arch == "arm64" ]]; then
   arch="arm64"
 else
   arch="amd64"
-  echo -e "  Không phát hiện được kiến trúc, hãy sử dụng kiến trúc mặc định: ${arch}${plain}"
+  echo -e "  Không phát hiện được phiên bản hệ thống, hãy sử dụng phiên bản mặc định: ${arch}${plain}"
 fi
 
-echo "Ngành kiến trúc: ${arch}"
+echo "  Phiên bản hệ thống: ${arch}"
 
 if [ $(getconf WORD_BIT) != '32' ] && [ $(getconf LONG_BIT) != '64' ] ; then
     echo "  Phần mềm này không hỗ trợ hệ thống 32-bit (x86), vui lòng sử dụng hệ thống 64-bit (x86_64), nếu phát hiện sai, vui lòng liên hệ với tác giả"
@@ -129,15 +129,15 @@ install_x-ui() {
     echo -e ""
     echo -e "  Nếu đó là để cập nhật bảng điều khiển, hãy truy cập bảng điều khiển như bạn đã làm trước đây"
     echo -e ""
-    echo -e "  x-ui Cách sử dụng tập lệnh quản lý: "
+    echo -e "      Cách sử dụng tập lệnh quản lý: "
     echo -e "--------------${green}[Đậu Đậu việt hóa]${plain}--------------"     
-    echo -e "  x-ui              - Menu quản lý màn hình (nhiều chức năng hơn)"
+    echo -e "  x-ui              - Menu quản lý x-ui (nhiều chức năng hơn)"
     echo -e "  x-ui start        - Khởi chạy bảng điều khiển x-ui"
     echo -e "  x-ui stop         - Dừng bảng điều khiển x-ui"
     echo -e "  x-ui restart      - Khởi động lại bảng điều khiển x-ui"
     echo -e "  x-ui status       - Xem trạng thái x-ui"
-    echo -e "  x-ui enable       - Đặt x-ui tự động khởi động sau khi khởi động"
-    echo -e "  x-ui disable      - Hủy khởi động x-ui để bắt đầu tự động"
+    echo -e "  x-ui enable       - Đặt tự động khởi động x-ui"
+    echo -e "  x-ui disable      - Hủy tự động khởi động x-ui"
     echo -e "  x-ui log          - Xem nhật ký x-ui"
     echo -e "  x-ui v2-ui        - Di chuyển dữ liệu tài khoản v2-ui của máy này sang x-ui"
     echo -e "  x-ui update       - Cập nhật bảng điều khiển x-ui"
