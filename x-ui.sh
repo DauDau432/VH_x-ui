@@ -280,7 +280,7 @@ migrate_v2_ui() {
 
 install_bbr() {
     # temporary workaround for installing bbr
-    bash <(curl -L -s https://raw.githubusercontent.com/teddysun/across/master/bbr.sh)
+    bash <(curl -L -s https://raw.githubusercontent.com/DauDau432/Linux-NetSpeed/master/tcp.sh)
     echo ""
     before_show_menu
 }
