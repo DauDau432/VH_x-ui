@@ -129,7 +129,7 @@ install_x-ui() {
     echo -e "  Hãy đảm bảo cổng ${green}54321${plain} không bị các chương trình khác chiếm Và Cổng ${green}54321${plain} đã được mở"
     echo -e "  Nếu bạn muốn đổi ${green}54321${plain} thành một cổng khác, hãy nhập lệnh ${green}x-ui${plain} để đổi và đảm bảo cổng đã đó cũng được mở"
     echo -e ""
-    echo -e "  Vào trình duyệt truy cập  ${green}https://${intenal_ip}:54321${plain}  để vào bảng điều khiển"
+    echo -e "  Vào trình duyệt truy cập  ${green}http://${intenal_ip}:54321${plain}  để vào bảng điều khiển"
     echo -e "  Tài khoản và mật khẩu mặc định là:  ${green}admin${plain}"
     echo -e ""
     echo -e "      Cách sử dụng tập lệnh quản lý: "
