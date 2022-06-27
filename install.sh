@@ -119,15 +119,18 @@ install_x-ui() {
     systemctl daemon-reload
     systemctl enable x-ui
     systemctl start x-ui
+    # gọi IP server
+    intenal_ip=$(ip addr | grep -E -o '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -E -v "^127\.|^255\.|^0\." | head -n 1)
+    
     clear 
     echo ""
-    echo -e "  ${green}x-ui v${last_version}${plain} Quá trình cài đặt hoàn tất và bảng điều khiển đã bắt đầu，"
+    echo -e "  ${green}x-ui v${last_version}${plain} Quá trình cài đặt hoàn tất và bảng điều khiển đã được bật"
     echo -e ""
-    echo -e "  Nếu đó là cài đặt mới, cổng web mặc định là ${green}54321${plain}，Tên người dùng và mật khẩu đều theo mặc định ${green}admin${plain}"
-    echo -e "  Hãy đảm bảo rằng cổng này không bị các chương trình khác chiếm giữ，${yellow}Và chắc rằng 54321 Cổng đã được phát hành${plain}"
-    echo -e "  Nếu bạn muốn sửa đổi 54321 thành một cổng khác, hãy nhập lệnh x-ui để sửa đổi và cũng đảm bảo rằng cổng đã sửa đổi cũng được phép"
+    echo -e "  Hãy đảm bảo rằng cổng ${green}54321${plain} không bị các chương trình khác chiếm giữ，Và chắc chắn rằng Cổng 54321 đã được mở"
+    echo -e "  Nếu bạn muốn đổi 54321 thành một cổng khác, hãy nhập lệnh x-ui để sửa đổi và cũng đảm bảo rằng cổng đã sửa đổi cũng được mở"
     echo -e ""
-    echo -e "  Nếu đó là để cập nhật bảng điều khiển, hãy truy cập bảng điều khiển như bạn đã làm trước đây"
+    echo "  Vào trình duyệt truy cập  ${green}https://${intenal_ip}:54321${plain}  để vào bảng điều khiển"
+    echo "  Tài khoản và mật khẩu mặc định là:  ${green}admin${plain}"
     echo -e ""
     echo -e "      Cách sử dụng tập lệnh quản lý: "
     echo -e "--------------${green}[Đậu Đậu việt hóa]${plain}--------------"     
