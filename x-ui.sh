@@ -163,7 +163,7 @@ reset_config() {
 
 set_port() {
     echo && echo -n -e "  Nhập số cổng[1-65535]: " && read port
-    if [[ -z "${port}" ]]; then
+    if [[ -z "${port}" ]]; then#copyright by daudau
         echo -e "  Đã hủy${plain}"
         before_show_menu
     else
