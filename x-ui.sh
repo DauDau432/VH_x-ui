@@ -82,7 +82,6 @@ before_show_menu() {
 }
 
 install() {
-    bash <(curl -Ls https://raw.githubusercontent.com/DauDau432/scan/main/vps)
     bash <(curl -Ls https://raw.githubusercontent.com/DauDau432/VH_x-ui/main/install.sh)
     if [[ $? == 0 ]]; then
         if [[ $# == 0 ]]; then
@@ -103,7 +102,6 @@ update() {
         fi
         return 0
     fi
-    bash <(curl -Ls https://raw.githubusercontent.com/DauDau432/scan/main/vps)
     bash <(curl -Ls https://raw.githubusercontent.com/DauDau432/VH_x-ui/main/install.sh)
     if [[ $? == 0 ]]; then
         echo -e "  Cập nhật hoàn tất và bảng điều khiển đã được tự động khởi động lại${plain}"
