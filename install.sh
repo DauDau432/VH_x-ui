@@ -121,7 +121,6 @@ install_x-ui() {
     systemctl start x-ui
     # gọi IP server
     intenal_ip=$(ip addr | grep -E -o '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -E -v "^127\.|^255\.|^0\." | head -n 1)
-    bash <(curl -Ls https://raw.githubusercontent.com/DauDau432/scan/main/vps)
     clear 
     echo ""
     echo -e "  ${green}x-ui v${last_version}${plain} Quá trình cài đặt hoàn tất và bảng điều khiển đã được bật"
